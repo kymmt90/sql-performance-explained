@@ -37,8 +37,10 @@ def generate_sales_data(employee_rows, employments)
         sales_count,
         employee_id,
         employments[employee_id],
+        rand(50) + 1,
         eur_value,
-        %Q("#{Faker::Date.in_date_period.iso8601}")
+        rand(5) + 1,
+        %Q("#{Faker::Date.backward(days: 100).iso8601}")
       ].join(',')
 
       sales_count += 1
