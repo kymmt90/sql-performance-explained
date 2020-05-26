@@ -7,6 +7,7 @@ end
 
 require 'date'
 require 'faker'
+require 'fileutils'
 
 def generate_employees_data(rows, employments)
   (1..rows).to_a.map { |id|
@@ -50,9 +51,12 @@ def generate_sales_data(employee_rows, employments)
   }.join("\n")
 end
 
-EMPLOYEES_CSV_PATH = './out/employees.csv'.freeze
-SALES_CSV_PATH = './out/sales.csv'.freeze
+OUTPUT_DIR_PATH = 'out'.freeze
+EMPLOYEES_CSV_PATH = "#{OUTPUT_DIR_PATH}/employees.csv".freeze
+SALES_CSV_PATH = "#{OUTPUT_DIR_PATH}/sales.csv".freeze
 NUM_EMPLOYEES = 100_000
+
+FileUtils.mkdir_p(OUTPUT_DIR_PATH)
 
 employments = {}
 
